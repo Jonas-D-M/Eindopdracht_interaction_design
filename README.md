@@ -11,13 +11,13 @@ Minimum 1 micro-interaction
 Instant weergave van de data uit de API: het moet iets zijn dat je direct kunt bekijken. Bv: https://daylight.today/app (Koppelingen naar een externe site.)
 
 # Aandachtspunten
-De 2 pagina’s hebben dezelfde visuele stijl
-Voorzie een favicon
-Responsive design (werk mobile first)
-Werk met CSS variables
-Werk met CSS grid
-Visibility of system status. Wat gebeurt er als je ergens op klikt? Zorg voor duidelijke feedback.
-Zorg voor een duidelijke form validatie
+* De 2 pagina’s hebben dezelfde visuele stijl
+* Voorzie een favicon
+* Responsive design (werk mobile first)
+* Werk met CSS variables
+* Werk met CSS grid
+* Visibility of system status. Wat gebeurt er als je ergens op klikt? Zorg voor duidelijke feedback.
+* Zorg voor een duidelijke form validatie
 # Data
 Ga op zoek naar data die je direct kan weergeven zonder dat een gebruiker iets moet doen. Denk na over het nut van je applicatie. Wat is je key question? En wat wil je oplossen?
 
