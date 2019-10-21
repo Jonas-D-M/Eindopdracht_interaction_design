@@ -53,8 +53,8 @@ Het moet nog niet werken.
 Zet je files live op een map van je persoonlijke howest url of via github.io en dien de 2 url’s in.
 
 # Presentatie 
-Wat heb je gemaakt en waarom?
-Wat is je key question?
-Toon inspiratie en voorbeelden
-Welke Interaction + hoe heb je het gedaan
-Welke visualisatie + hoe heb je het gedaan
+* Wat heb je gemaakt en waarom?
+* Wat is je key question?
+* Toon inspiratie en voorbeelden
+* Welke Interaction + hoe heb je het gedaan
+* Welke visualisatie + hoe heb je het gedaan
