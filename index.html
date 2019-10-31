@@ -9,19 +9,33 @@
     <title>InSight</title>
   </head>
   <body>
-    <section class="o-row">
-      <h1 class="c-logo">InSight</h1>
-      <p class="c-intro-text">InSight is taking daily weather measurements on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars' equator.</p>
-      <img src="./img/mockup/mockup.png" alt="mockup" />
-      <h2>Don't miss the launch!</h2>
-      <p>Sign up today to get notified when we launch our application.</p>
-      <form>
-        <label>
-          E-mail
-          <input type="text" name="e-mailbox" id="e-mailboxid" />
-        </label>
-        <input type="button" value="Join the waitlist" />
-      </form>
+    <section class="o-row u-pt-clear">
+      <div class="o-container ">
+        <h1 class="c-logo">InSight</h1>
+        <div class="c-intro">
+          <p class="c-intro-text ">InSight is taking daily weather measurements on the surface of Mars at Elysium Planitia, a flat, smooth plain near Mars' equator.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="o-row u-pt-clear u-text-align-center">
+      <div class="o-container u-max-width--xl ">
+        <div class="o-layout o-layout--row-reverse o-layout--justify-center">
+          <div class="o_layout__item u-1-of-2-bp3 ">
+            <img class="c-mockup" src="./img/mockup/mockup.png" alt="mockup" />
+          </div>
+          <div class="o_layout__item u-1-of-2-bp3 ">
+            <h2 class="c-subtitle">Don't miss the launch!</h2>
+            <p>Sign up today to get notified when we launch our application.</p>
+            <form>
+                E-mail
+                <input class="c-input" type="text" name="e-mailbox" id="e-mailboxid" placeholder="e-mail" />
+              </label>
+              <input class="o-button-reset c-button" type="button" value="Join the waitlist" />
+            </form>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
 </html>

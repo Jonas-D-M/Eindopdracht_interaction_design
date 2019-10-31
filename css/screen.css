@@ -240,6 +240,35 @@ input {
 \*------------------------------------*/
 
 /*
+    Object: Button reset
+    ---
+    Small button reset object
+*/
+
+.o-button-reset {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/*
     Objects: Row
     ---
     Creates a horizontal row that stretches the viewport and adds padding around children
@@ -247,7 +276,7 @@ input {
 
 .o-row {
   position: relative;
-  padding: 24px 24px 0;
+  padding: 16px 16px 0;
 }
 
 .o-row--login {
@@ -493,16 +522,43 @@ input {
 #COMPONENTS
 \*------------------------------------*/
 /*
+    Component: subtitle
+*/
+.c-subtitle {
+  font-weight: 600;
+  line-height: 24px;
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+/*
+    Component: mockup
+    ---
+  shows mockup of application
+*/
+.c-mockup {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 72px;
+}
+
+/*
     Component: intro-text
     ---
     Website intro text under the logo
 */
+.c-intro {
+  width: 100%;
+}
 
 .c-intro-text {
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  width: 100%;
+  height: 76px;
+  margin-bottom: 72px;
+  min-width: 266px;
 }
 
 /*
@@ -512,26 +568,13 @@ input {
 */
 
 .c-logo {
-  height: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 56px;
   margin-bottom: 16px;
   line-height: 39px;
-}
-
-.c-logo__symbol {
-  height: 100%;
-}
-
-.c-logo__path-1 {
-  fill: #20223a;
-}
-.c-logo__path-2 {
-  fill: #3385ff;
-}
-.c-logo__path-3 {
-  fill: #1b4186;
+  min-width: 100%;
 }
 
 /*
@@ -600,22 +643,49 @@ input {
   font-size: 16px;
   line-height: 24px;
   width: 100%;
-  border: 1px solid #e2e3e7;
-  border-radius: 3px;
-  padding: 11px 16px;
-  font-family: 'Inter Web', Helvetica, arial, sans-serif;
+  margin-bottom: 8px;
+
+  border: none;
   outline: none;
+  border-radius: 3px;
+
+  padding: 11px 16px;
+
+  font-family: 'Montserrat', Helvetica, arial, sans-serif;
   transition: all 0.1s ease-in-out;
+
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Change placeholder for Chrome */
+.c-input::-webkit-input-placeholder {
+  color: white;
+  font-family: 'Montserrat', Helvetica, arial, sans-serif;
+  font-weight: 400;
+}
+/* Change placeholder for Firefox */
+.c-input::-ms-input-placeholder {
+  color: white;
+  font-family: 'Montserrat', Helvetica, arial, sans-serif;
+  font-weight: 400;
+}
+
+/* Change placeholder for Opera */
+.c-input::-o-input-placeholder {
+  color: white;
+  font-family: 'Montserrat', Helvetica, arial, sans-serif;
+  font-weight: 400;
 }
 
 .c-input:focus {
-  border-color: #3385ff;
-  box-shadow: 0 0 0 3px #3385ff4d;
+  /* border-color: #3385ff;
+  box-shadow: 0 0 0 3px #3385ff4d; */
 }
 
 .c-input:hover {
-  border-color: #caccd4;
-  transition: all 0.1s ease-in-out;
+  /* border-color: #caccd4;
+  transition: all 0.1s ease-in-out; */
 }
 
 /*
@@ -671,6 +741,44 @@ input {
 }
 
 .c-button--block {
+}
+
+/*
+    Component: Button
+    ---
+    Class to put on form buttons or
+*/
+
+.c-button {
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: var(--button-borderRadius, var(--global-borderRadius));
+  border: var(--button-borderWidth, var(--global-borderWidth)) solid var(--button-borderColor, var(--global-color-alpha-dark));
+  background-color: var(--button-backgroundColor, var(--global-color-alpha));
+  color: #fff;
+  padding: calc(var(--global-baseline) * 1.5 - var(--button-borderWidth, var(--global-borderWidth))) var(--global-whitespace-md);
+  line-height: calc(var(--global-baseline) * 3);
+  width: 100%;
+  outline: none;
+  box-shadow: var(--button-boxShadow, 0);
+  transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+}
+
+.c-button:hover {
+  border-color: var(--button-hover-borderColor, var(--global-color-alpha-dark));
+  background-color: var(--button-hover-backgroundColor, var(--global-color-alpha-light));
+}
+
+.c-button:focus {
+  background-color: var(--button-focus-backgroundColor, var(--global-color-alpha));
+  border-color: var(--button-focus-borderColor, var(--global-color-alpha-dark));
+  box-shadow: var(--global-input-focus-boxShadowSpread) var(--button-focus-boxShadowColor, var(--global-input-focus-boxShadowColor));
+}
+
+.c-button:active {
+  background-color: var(--button-active-backgroundColor, var(--global-color-alpha-dark));
+  border-color: var(--button-active-borderColor, var(--global-color-alpha-dark));
+  box-shadow: var(--button-active-boxShadow, 0);
 }
 
 /*------------------------------------*\
