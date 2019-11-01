@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/screen.css" />
+    <script src="./script/app.js"></script>
     <title>InSight</title>
   </head>
   <body>
@@ -21,17 +22,17 @@
     <section class="o-row u-pt-clear u-text-align-center">
       <div class="o-container u-max-width--xl ">
         <div class="o-layout o-layout--row-reverse o-layout--justify-center">
-          <div class="o_layout__item u-1-of-2-bp3 ">
+          <div class="o_layout__item u-1-of-2-bp2 ">
             <img class="c-mockup" src="./img/mockup/mockup.png" alt="mockup" />
           </div>
-          <div class="o_layout__item u-1-of-2-bp3 ">
+          <div class="o_layout__item u-1-of-2-bp2 ">
             <h2 class="c-subtitle">Don't miss the launch!</h2>
-            <p>Sign up today to get notified when we launch our application.</p>
-            <form>
+            <p class="c-subtext">Sign up today to get notified when we launch our application.</p>
+            <form method="POST">
                 E-mail
-                <input class="c-input" type="text" name="e-mailbox" id="e-mailboxid" placeholder="e-mail" />
+                <input class="c-input" type="text" name="e-mailbox" id="e-mailboxid" placeholder="E-mail" required/>
               </label>
-              <input class="o-button-reset c-button" type="button" value="Join the waitlist" />
+              <input class="o-button-reset c-button" type="button" value="Join the waitlist" onclick="location.href = 'weather.html';"/>
             </form>
           </div>
         </div>
