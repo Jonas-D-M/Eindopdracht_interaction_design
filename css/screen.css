@@ -865,6 +865,7 @@ more padding on the right to avoid overlap
 }
 
 .c-button:active {
+  background-color: black;
 }
 
 /*------------------------------------*\
