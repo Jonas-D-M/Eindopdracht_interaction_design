@@ -323,7 +323,7 @@ input {
 */
 
 .o-row {
-  /* position: relative; */
+  position: relative;
   padding: 16px 16px 0;
 }
 
@@ -331,12 +331,15 @@ input {
   /* stuff here to align the card */
 }
 .o-row--body {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   align-items: center;
 }
-/* size modifiers */
-
+@media (min-width: 768px) {
+  .o-row--body {
+    min-height: 70vh;
+  }
+}
 .o-row--lg {
   padding-top: 48px;
   padding-bottom: 24px;
