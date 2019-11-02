@@ -598,8 +598,8 @@ input {
 */
 .c-mockup {
   width: 100%;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   margin-bottom: 72px;
 }
 @media (min-width: 768px) {
@@ -616,13 +616,14 @@ input {
 */
 .c-intro {
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .c-intro-text {
   font-size: 16px;
   line-height: 19px;
   text-align: center;
-  height: 76px;
   margin-left: 31px;
   margin-right: 31px;
   margin-bottom: 72px;
