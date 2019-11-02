@@ -19,37 +19,85 @@
 \*------------------------------------*/
 
 :root {
-  /* colors */
-  --global-color-alpha-ligth: #4f95ff;
+  --global-color-alpha-light: #4f95ff;
   --global-color-alpha: #3385ff;
   --global-color-alpha-dark: #2e77e6;
   --global-color-alpha-x-dark: #1b4186;
-  --global-color-neutral-xx-dark: #4b4c60;
-  --global-color-neutral-xxx-dark: #353743;
-  --global-color-neutral-xxxx-dark: #20223a;
-  --global-color-neutral-base: #757787;
-  --global-color-dark: #606274;
-  --global-color-x-dark: #4b4c60;
-  --global-color-xx-dark: #35374d;
-  --global-color-xxx-dark: #2a2c43;
-  --global-color-xxxx-dark: #20223a;
+  --global-color-alpha-transparent: #3385ffbf;
+  --global-color-alpha-x-transparent: #3385ff4d;
 
+  --global-color-neutral-xxxx-light: #f5f6fa;
+  --global-color-neutral-xxx-light: #e2e3e7;
+  --global-color-neutral-xx-light: #caccd4;
+  --global-color-neutral-x-light: #b5b6c0;
+  --global-color-neutral-light: #a0a1ad;
+  --global-color-neutral: #8b8c9a;
+  --global-color-neutral-dark: #757787;
+  --global-color-neutral-x-dark: #606274;
+  --global-color-neutral-xx-dark: #4b4c60;
+  --global-color-neutral-xxx-dark: #35374d;
+  --global-color-neutral-xxxx-dark: #20223a;
+  --global-color-error: #ff3333;
+  --global-color-error-transparent: #ff3333bf;
+  --global-color-error-x-transparent: #ff33334d;
+
+  /* global page settings */
+  --global-page-color: var(--global-color-neutral-xxxx-dark);
+  --global-page-backgroundColor: var(--global-color-neutral-xxxx-light);
+  --global-selection-backgroundColor: var(--global-color-alpha);
+
+  /* border radius */
   --global-borderRadius: 3px;
   --global-borderWidth: 1px;
 
-  --global-transitionTiming-alpha: 0.1s ease-out;
+  /* transitions */
+  --global-transitionEasing-out: ease-out;
+  --global-transitionEasing-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --global-transitionDuration-alpha: 0.1s;
+  --global-transitionDuration-beta: 0.2s;
+  --global-transitionDuration-gamma: 0.3s;
 
+  /* Baseline settings */
   --global-baseline: 8px;
-  --global-whitespace: calc(var(--global-baseline) * 3);
+  --global-whitespace: calc(var(--global-baseline) * 3); /* = 24px */
 
-  --global-whitespace-xs: calc(var(--global-baseline) * 0.5);
-  --global-whitespace-sm: calc(var(--global-baseline) * 1);
-  --global-whitespace-md: calc(var(--global-baseline) * 2);
-  --global-whitespace-lg: calc(var(--global-baseline) * 4);
-  --global-whitespace-xl: calc(var(--global-whitespace) * 2);
-  --global-whitespace-xxl: calc(var(--global-whitespace) * 3);
+  --global-whitespace-xs: calc(var(--global-baseline) * 0.5); /* = 4px */
+  --global-whitespace-sm: calc(var(--global-baseline) * 1); /*  = 8px */
+  --global-whitespace-md: calc(var(--global-baseline) * 2); /*  = 16px */
+  --global-whitespace-lg: calc(var(--global-baseline) * 4); /*  = 32px */
+  --global-whitespace-xl: calc(var(--global-whitespace) * 2); /*  = 48px */
+  --global-whitespace-xxl: calc(var(--global-whitespace) * 3); /*  = 72px */
+
+  /* forms */
+  --global-label-color: var(--global-color-neutral-xx-dark);
+  --global-placeholder-color: var(--global-color-neutral-x-light);
+  --global-input-backgroundColor: White;
+  --global-input-color: var(--global-color-neutral-xxxx-dark);
+  --global-input-borderColor: var(--global-color-neutral-xxx-light);
+  --global-input-hover-borderColor: var(--global-color-neutral-xx-light);
+  --global-input-focus-borderColor: var(--global-color-alpha);
+  --global-input-error-borderColor: var(--global-color-error);
+  --global-input-focus-boxShadowSpread: 0 0 0 3px;
+  --global-input-focus-boxShadowColor: var(--global-color-alpha-x-transparent);
+  --global-input-error-boxShadowColor: var(--global-color-error-x-transparent);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --global-page-color: White;
+    --global-page-backgroundColor: var(--global-color-neutral-xxxx-dark);
+
+    --global-label-color: var(--global-color-neutral-xx-light);
+    --global-placeholder-color: var(--global-color-neutral-dark);
+    --global-input-backgroundColor: var(--global-color-neutral-xxxx-dark);
+    --global-input-color: var(--global-color-neutral-xxxx-light);
+    --global-input-borderColor: var(--global-input-backgroundColor);
+    --global-input-hover-borderColor: var(--global-input-backgroundColor);
+    --global-input-focus-borderColor: var(--global-input-backgroundColor);
+    --global-input-focus-boxShadowColor: var(--global-color-alpha-transparent);
+    --global-input-error-boxShadowColor: var(--global-color-error-transparent);
+  }
+}
 /* CSS variables here */
 
 /*------------------------------------*\
@@ -275,7 +323,7 @@ input {
 */
 
 .o-row {
-  position: relative;
+  /* position: relative; */
   padding: 16px 16px 0;
 }
 
@@ -578,7 +626,6 @@ input {
   margin-left: 31px;
   margin-right: 31px;
   margin-bottom: 72px;
-  /* min-width: 266px; */
 }
 @media (max-width: 320px) {
   .c-intro-text {
@@ -616,9 +663,7 @@ input {
 */
 
 .c-card {
-  background-color: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
 }
 
 .c-card__body,
@@ -657,6 +702,10 @@ input {
     Everything form related here
 */
 
+.c-form-field {
+  position: relative;
+}
+
 .c-form-field--option {
   display: flex;
   align-items: center;
@@ -669,56 +718,58 @@ input {
 */
 
 .c-input {
+  --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  font-size: 16px;
-  line-height: 24px;
   width: 100%;
-  height: 48px;
-  margin-bottom: 8px;
 
-  border: none;
-  outline: none;
   border-radius: 8px;
+  border: hidden 1px;
 
-  padding: 11px 16px;
-
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
-  transition: all 0.1s ease-in-out;
-
-  color: white;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Change placeholder for Chrome */
-.c-input::-webkit-input-placeholder {
   color: white;
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
-  font-weight: 400;
-}
-/* Change placeholder for Firefox */
-.c-input::-ms-input-placeholder {
-  color: white;
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
-  font-weight: 400;
-}
 
-/* Change placeholder for Opera */
-.c-input::-o-input-placeholder {
-  color: white;
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
-  font-weight: 400;
-}
+  font-family: inherit;
+  font-size: 16px;
+  line-height: calc(var(--global-baseline) * 3);
 
-.c-input:focus {
-  /* border-color: #3385ff;
-  box-shadow: 0 0 0 3px #3385ff4d; */
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
+
+  outline: none;
+  transition: var(--input-transition);
+  margin-bottom: 8px;
 }
 
 .c-input:hover {
-  /* border-color: #caccd4;
-  transition: all 0.1s ease-in-out; */
+  border-color: var(--input-hover-borderColor, var(--global-input-hover-borderColor));
+}
+
+.c-input:focus,
+.c-input:active {
+  border-color: black;
+  box-shadow: var(--global-input-focus-boxShadowSpread) rgba(0, 0, 0, 0.5);
+}
+
+/*
+Input password with toggle checkbox on top of it needs
+more padding on the right to avoid overlap
+*/
+
+.c-input--password-with-toggle {
+  padding-right: 52px;
+}
+
+/* input password with floating label */
+
+.c-input--with-floating-label:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+/* option input for checkboxes and radio buttons */
+
+.c-option {
+  margin-right: var(--global-whitespace-sm);
 }
 
 /*
@@ -728,53 +779,48 @@ input {
 */
 
 .c-label {
+  margin-bottom: 0;
   font-size: 14px;
-  color: #4b4c60;
-  padding-bottom: 8px;
+  padding-bottom: var(--global-whitespace-sm);
+  line-height: calc(var(--global-baseline) * 2);
+  color: white;
+  font-family: 'Montserrat', Helvetica, arial, sans-serif;
 }
 
 .c-label--option {
   padding-bottom: 0;
-  padding: 8px;
 }
 
-/* If a input is focused within the form-field class change te color of the label */
-
-.c-form-field:focus-within .c-label {
+.c-label__error-message {
+  font-weight: 600;
+  float: right;
+  display: none;
 }
 
-/*
-    Component: Button
-    ---
-    Class to put on form buttons or links
-*/
-
-/* .c-button {
-  text-align: center;
-  line-height: 24px;
-  width: 100%;
-  padding: 11px 16px;
-  background-color: black;
-  color: #ffffff;
-  border-radius: 3px;
-  font-size: 16px;
-  border: 1px solid #2e77e6;
+.c-label__error-message.is-visible {
+  display: block;
 }
 
-.c-button:hover {
-  background-color: #4f95ff;
+.c-label--floating {
+  position: absolute;
+  top: calc(var(--global-baseline) * 2);
+  left: var(--global-whitespace-sm);
+  padding: 0 var(--global-whitespace-sm);
+  background-color: transparent;
+  transition: transform var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  z-index: 1;
 }
 
-.c-button:focus {
-  box-shadow: 0 0 0 3px rgba(51, 133, 255, 0.49);
+.is-floating,
+.c-form-field:focus-within .c-label--floating {
+  transform: translateY(calc(var(--global-baseline) * -3));
 }
 
-.c-button:active {
-  background-color: #2e77e6;
+@media (prefers-color-scheme: dark) {
+  .c-label--floating {
+    --label--floating-backgroundColor: transparent;
+  }
 }
-
-.c-button--block {
-} */
 
 /*
     Component: Button
@@ -811,11 +857,10 @@ input {
 }
 
 .c-button:focus {
-  outline: 1px solid rgba(5, 5, 5, 0.9);
+  background-color: rgba(5, 5, 5, 0.9);
 }
 
 .c-button:active {
-  background-color: rgba(5, 5, 5, 0.9);
 }
 
 /*------------------------------------*\

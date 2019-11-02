@@ -28,11 +28,16 @@
           <div class="o_layout__item u-1-of-2-bp2 ">
             <h2 class="c-subtitle">Don't miss the launch!</h2>
             <p class="c-subtext">Sign up today to get notified when we launch our application.</p>
-            <form method="POST">
-                E-mail
-                <input class="c-input" type="text" name="e-mailbox" id="e-mailboxid" placeholder="E-mail" required/>
-              </label>
-              <input class="o-button-reset c-button" type="button" value="Join the waitlist" onclick="location.href = 'weather.html';"/>
+
+            <form method="#">
+              <p class="c-form-field">
+                <label class="c-label c-label--floating js-floating-label" for="username">
+                  Email
+                </label>
+                <input class="c-input c-input--with-floating-label js-floating-input" type="email" name="username" id="username" required />
+
+                <input class="o-button-reset c-button" type="button" value="Join the waitlist" />
+              </p>
             </form>
           </div>
         </div>
