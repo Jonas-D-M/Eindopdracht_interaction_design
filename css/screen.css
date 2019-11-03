@@ -705,6 +705,10 @@ input {
     ---
     Everything form related here
 */
+.c-form {
+  min-height: 70vh;
+  display: flex;
+}
 
 .c-form-field {
   position: relative;
