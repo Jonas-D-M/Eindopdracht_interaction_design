@@ -3,15 +3,15 @@
 \*------------------------------------*/
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 400;
-  src: url('../fonts/Montserrat-Regular.ttf') format('ttf');
+  src: url("../fonts/Montserrat-Regular.ttf") format("ttf");
 }
 
 @font-face {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-weight: 600;
-  src: url('../fonts/Montserrat-Bold.ttf') format('ttf');
+  src: url("../fonts/Montserrat-Bold.ttf") format("ttf");
 }
 
 /*------------------------------------*\
@@ -113,13 +113,13 @@
 html {
   font-size: 16px;
   line-height: 1.5;
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
+  font-family: "Montserrat", Helvetica, arial, sans-serif;
   color: white;
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url('../img/marswallpaper.jpg');
+  background-image: url("../img/marswallpaper.jpg");
   /* Background image is centered vertically and horizontally at all times */
   background-position: center center;
 
@@ -259,8 +259,9 @@ figcaption {
 hr {
   border: 0;
   height: 1px;
-  background: LightGrey;
-  margin: 0 0 24px;
+  background: white;
+  margin-top: 8px;
+  margin-bottom: 24px;
 }
 
 a {
@@ -701,6 +702,49 @@ input {
 }
 
 /*
+    Component: weather
+    ---
+    Everything related to weather messages
+*/
+
+.c-weather {
+  margin-top: 40px;
+  margin-bottom: 8px;
+}
+
+.c-weather-body {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px 16px;
+  min-width: 168px;
+  min-height: 166px;
+  margin-bottom: 24px;
+}
+
+.c-weather-header {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+.c-weather-subheader {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.c-weather-high,
+.c-weather-low {
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-weather-low {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+/*
     Component: Forms
     ---
     Everything form related here
@@ -726,7 +770,8 @@ input {
 */
 
 .c-input {
-  --input-transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  --input-transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -742,7 +787,8 @@ input {
   font-size: 16px;
   line-height: calc(var(--global-baseline) * 3);
 
-  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth)) var(--global-whitespace-md);
+  padding: calc(var(--global-baseline) * 1.5 - var(--global-borderWidth))
+    var(--global-whitespace-md);
 
   outline: none;
   transition: var(--input-transition);
@@ -750,7 +796,10 @@ input {
 }
 
 .c-input:hover {
-  border-color: var(--input-hover-borderColor, var(--global-input-hover-borderColor));
+  border-color: var(
+    --input-hover-borderColor,
+    var(--global-input-hover-borderColor)
+  );
 }
 
 .c-input:focus,
@@ -792,7 +841,7 @@ more padding on the right to avoid overlap
   padding-bottom: var(--global-whitespace-sm);
   line-height: calc(var(--global-baseline) * 2);
   color: white;
-  font-family: 'Montserrat', Helvetica, arial, sans-serif;
+  font-family: "Montserrat", Helvetica, arial, sans-serif;
 }
 
 .c-label--option {
@@ -815,7 +864,8 @@ more padding on the right to avoid overlap
   left: var(--global-whitespace-sm);
   padding: 0 var(--global-whitespace-sm);
   background-color: transparent;
-  transition: transform var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  transition: transform var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
   z-index: 1;
 }
 
@@ -849,13 +899,18 @@ more padding on the right to avoid overlap
   background-color: rgba(12, 12, 12, 0.9);
   color: #fff;
 
-  padding: calc(var(--global-baseline) * 1.5 - var(--button-borderWidth, var(--global-borderWidth))) var(--global-whitespace-md);
+  padding: calc(
+      var(--global-baseline) * 1.5 -
+        var(--button-borderWidth, var(--global-borderWidth))
+    )
+    var(--global-whitespace-md);
 
   line-height: 21px;
 
   width: 100%;
 
-  transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
+  transition: all var(--global-transitionDuration-alpha)
+    var(--global-transitionEasing-out);
 
   margin-bottom: 32px;
 }
@@ -1227,18 +1282,18 @@ No media query since this is the default in mobile first design
     text-decoration: underline;
   }
   a[href]:after {
-    content: ' (' attr(href) ')';
+    content: " (" attr(href) ")";
   }
   abbr[title]:after {
-    content: ' (' attr(title) ')';
+    content: " (" attr(title) ")";
   }
   /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
     */
-  a[href^='#']:after,
-  a[href^='javascript:']:after {
-    content: '';
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
   }
   pre {
     white-space: pre-wrap !important;

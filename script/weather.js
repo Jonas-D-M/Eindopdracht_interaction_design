@@ -50,18 +50,6 @@ const getSolKeys = function(json) {
   console.log(mx_temps);
 };
 
-// JSON.259.AT.av
-// vb. 259.AT.av = 71.233 °C
-
-// const getTemperatures = function(json) {
-//   console.log("Here are the temps");
-//   for (let days of json.sol_keys) {
-//     temps.push(days);
-//     console.log(days);
-//     console.log("Temp: ", days);
-//   }
-// };
-
 document.addEventListener("DOMContentLoaded", function() {
   console.log("JAVASCRIPT IS LOADED!");
 });
