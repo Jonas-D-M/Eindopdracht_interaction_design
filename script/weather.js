@@ -4,50 +4,49 @@ serverEndpoint =
 
 fetch(serverEndpoint)
   .then(function(response) {
-    console.log(response);
     return response.json();
   })
   .then(function(json) {
-    console.log(JSON.stringify(json));
     getSolKeys(json);
-    // getTemperatures(json);
   });
 
 const getSolKeys = function(json) {
+  let list = "";
   let keys = [];
-  let av_temps = [];
-  let mn_temps = [];
-  let mx_temps = [];
+  let avTemp, mnTemp, mxTemp;
 
-  // Gets keys to access temps
+  let i = 0;
   for (let days of json.sol_keys) {
     keys.push(days);
+
+    avTemp = FahrenheitToCelsius(json[keys[i]].AT.av);
+    mnTemp = FahrenheitToCelsius(json[keys[i]].AT.mn);
+    mxTemp = FahrenheitToCelsius(json[keys[i]].AT.mx);
+
+    list += `<div class="c-weather-body">
+    <div class="c-weather-header">Sol ${keys[i]}</div>
+    <div class="c-weather-subheader">Today</div>
+    <hr />
+    <div class="c-weather-high">
+      <div class="c-weather-text">High:</div>
+      <div class="c-weather-value">${mxTemp} °C</div>
+    </div>
+    <div class="c-weather-low">
+      <div class="c-weather-text">Low:</div>
+      <div class="c-weather-value">${mnTemp} °C</div>
+    </div>
+  </div>`;
+
+    i++;
   }
 
-  // Gets the different temps with the keys
-  for (let i = 0; i < keys.length; i++) {
-    av_temp = json[keys[i]].AT.av;
-    // conversion to celcius
-    c_temp = (av_temp - 32) * 0.5556;
-    av_temps.push(c_temp);
-  }
-  for (let i = 0; i < keys.length; i++) {
-    mn_temp = json[keys[i]].AT.mn;
-    c_temp = (mn_temp - 32) * 0.5556;
-    mn_temps.push(c_temp);
-  }
-  for (let i = 0; i < keys.length; i++) {
-    mx_temp = json[keys[i]].AT.mx;
-    c_temp = (mx_temp - 32) * 0.5556;
-    mx_temps.push(c_temp);
-  }
+  document.querySelector(".c-weather").innerHTML = list;
+};
 
-  console.log("av temps");
-  console.log(av_temps);
-  console.log("mn temps");
-  console.log(mn_temps);
-  console.log("mx temps");
-  console.log(mx_temps);
+const FahrenheitToCelsius = function(fahrenheit) {
+  let fTemp = fahrenheit;
+  let conversion = ((fTemp - 32) * 5) / 9;
+  return Number(conversion.toFixed(2));
 };
 
 document.addEventListener("DOMContentLoaded", function() {
