@@ -590,8 +590,7 @@ input {
 }
 
 .c-subtext {
-  margin-left: 18px;
-  margin-right: 18px;
+  width: 100%;
   /* min-width: 293px; */
 }
 @media (max-width: 320px) {
@@ -610,6 +609,7 @@ input {
   height: 316px;
   width: 144px;
   width: 100%;
+  margin-bottom: 42px;
   /* display: flex;
   justify-content: center; */
 }
@@ -633,12 +633,10 @@ input {
 
 .c-intro-text {
   font-size: 16px;
-  line-height: 19px;
+  line-height: 24px;
   text-align: center;
-  margin-left: 31px;
-  margin-right: 31px;
   margin-bottom: 72px;
-  width: 266px;
+  width: 100%;
 }
 @media (max-width: 320px) {
   .c-intro-text {
@@ -670,8 +668,14 @@ input {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 16px;
-  height: 39px;
+  height: 24px;
   min-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .c-logo {
+    height: 42px;
+  }
 }
 
 @media (max-width: 320px) {
@@ -770,7 +774,7 @@ input {
     Everything form related here
 */
 .c-form {
-  min-height: 70vh;
+  /* min-height: 70vh; */
   display: flex;
 }
 
@@ -932,7 +936,7 @@ more padding on the right to avoid overlap
   transition: all var(--global-transitionDuration-alpha)
     var(--global-transitionEasing-out);
 
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .c-button:hover {
