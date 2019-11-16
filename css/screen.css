@@ -14,6 +14,11 @@
   src: url("../fonts/Montserrat-Bold.ttf") format("ttf");
 }
 
+@font-face {
+  font-family: "Zian";
+  src: url("../fonts/Zian.ttf") format("ttf");
+}
+
 /*------------------------------------*\
 #Variables
 \*------------------------------------*/
@@ -195,6 +200,7 @@ h1 {
   font-size: 36px;
   line-height: 48px;
   margin: 0 0 24px;
+  font-family: "Zian", Helvetica, arial, sans-serif;
 }
 
 h2 {
@@ -601,15 +607,16 @@ input {
   shows mockup of application
 */
 .c-mockup {
+  height: 316px;
+  width: 144px;
   width: 100%;
   /* display: flex;
   justify-content: center; */
-  margin-bottom: 72px;
 }
 @media (min-width: 768px) {
   .c-mockup {
-    height: 479px;
     width: 232px;
+    height: 509px;
   }
 }
 
@@ -631,11 +638,23 @@ input {
   margin-left: 31px;
   margin-right: 31px;
   margin-bottom: 72px;
+  width: 266px;
 }
 @media (max-width: 320px) {
   .c-intro-text {
     font-size: 14px;
     line-height: 16px;
+  }
+}
+@media (min-width: 768px) {
+  .c-intro-text {
+    width: 567px;
+  }
+}
+@media (min-width: 768px) {
+  .c-intro-text {
+    line-height: 29px;
+    width: 599px;
   }
 }
 
@@ -651,7 +670,7 @@ input {
   justify-content: center;
   margin-top: 40px;
   margin-bottom: 16px;
-  line-height: 39px;
+  height: 39px;
   min-width: 100%;
 }
 
