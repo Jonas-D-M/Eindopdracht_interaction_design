@@ -1,6 +1,5 @@
 // Documentation: https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf
-serverEndpoint =
-  "https://api.nasa.gov/insight_weather/?api_key=MvvlPiedxmmIBY45P0Dboo28sPGbopdXaZ7iqamW&feedtype=json&ver=1.0";
+serverEndpoint = 'https://api.nasa.gov/insight_weather/?api_key=MvvlPiedxmmIBY45P0Dboo28sPGbopdXaZ7iqamW&feedtype=json&ver=1.0';
 
 fetch(serverEndpoint)
   .then(function(response) {
@@ -12,7 +11,7 @@ fetch(serverEndpoint)
   });
 
 const getSolKeys = function(json) {
-  let list = "";
+  let list = '';
   let keys = [];
   let avTemps = [];
   let mnTemps = [];
@@ -58,7 +57,7 @@ const getSolKeys = function(json) {
   `;
   }
 
-  document.querySelector(".c-weather").innerHTML = list;
+  document.querySelector('.c-weather').innerHTML = list;
 };
 
 const FahrenheitToCelsius = function(fahrenheit) {
@@ -73,6 +72,6 @@ const FahrenheitToCelsius = function(fahrenheit) {
 //   return new Date(date.setDate(day)); // add the number of days
 // };
 
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("JAVASCRIPT IS LOADED!");
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('JAVASCRIPT IS LOADED!');
 });
