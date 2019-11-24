@@ -712,6 +712,15 @@ input {
 }
 
 /*
+    Component: compass
+    ---
+    Everything related to the compass shown on weather page
+*/
+.c-compass {
+  margin-top: 32px;
+}
+
+/*
     Component: weather
     ---
     Everything related to weather messages
@@ -725,9 +734,9 @@ input {
 .c-weather-body {
   background-color: rgba(0, 0, 0, 0.4);
 
-  padding: 8px 16px;
-  min-width: 168px;
-  min-height: 166px;
+  padding: 16px;
+  min-width: 184px;
+  min-height: 182px;
   margin-bottom: 24px;
 }
 
