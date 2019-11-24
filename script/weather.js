@@ -38,26 +38,52 @@ const getSolKeys = function(json) {
   mxTemps.reverse();
 
   for (let i = 0; i < keys.length; i++) {
-    list += `<div class="c-weather-body">
-    <div class="c-weather-header">Sol ${keys[i]}</div>
-    <hr />
-    <div class="c-weather-high">
-      <div class="c-weather-text">High:</div>
-      <div class="c-weather-value">${mxTemps[i]} °C</div>
+    if (i == 0) {
+      list += `
+      <div class="header">
+      <div class="c-weather-body">
+      <div class="c-weather-header">Sol ${keys[i]}</div>
+      <hr />
+      <div class="c-weather-high">
+        <div class="c-weather-text">High:</div>
+        <div class="c-weather-value">${mxTemps[i]} °C</div>
+      </div>
+      <div class="c-weather-low">
+        <div class="c-weather-text">Low:</div>
+        <div class="c-weather-value">${mnTemps[i]} °C</div>
+      </div>
+      <div class="c-weather-average">
+                  <div class="c-weather-text">Ave:</div>
+                  <div class="c-weather-value">${avTemps[i]} °C</div>
+                </div>
     </div>
-    <div class="c-weather-low">
-      <div class="c-weather-text">Low:</div>
-      <div class="c-weather-value">${mnTemps[i]} °C</div>
     </div>
-    <div class="c-weather-average">
-                <div class="c-weather-text">Ave:</div>
-                <div class="c-weather-value">${avTemps[i]} °C</div>
-              </div>
-  </div>
-  `;
+    `;
+    } else {
+      list += `
+      <div class="main">
+      <div class="c-weather-body">
+      <div class="c-weather-header">Sol ${keys[i]}</div>
+      <hr />
+      <div class="c-weather-high">
+        <div class="c-weather-text">High:</div>
+        <div class="c-weather-value">${mxTemps[i]} °C</div>
+      </div>
+      <div class="c-weather-low">
+        <div class="c-weather-text">Low:</div>
+        <div class="c-weather-value">${mnTemps[i]} °C</div>
+      </div>
+      <div class="c-weather-average">
+                  <div class="c-weather-text">Ave:</div>
+                  <div class="c-weather-value">${avTemps[i]} °C</div>
+                </div>
+    </div>
+    </div>
+    `;
+    }
   }
-
   document.querySelector('.c-weather').innerHTML = list;
+  console.log('Script success!');
 };
 
 const FahrenheitToCelsius = function(fahrenheit) {
