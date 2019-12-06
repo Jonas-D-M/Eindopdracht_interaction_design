@@ -7,16 +7,19 @@ fetch(serverEndpoint)
     return response.json();
   })
   .then(function(json) {
-    getSolKeys(json);
+    console.log(json);
+    getWeatherData(json);
   });
 
-const getSolKeys = function(json) {
+const getWeatherData = function(json) {
   let list = '';
   let keys = [];
   let avTemps = [];
   let mnTemps = [];
   let mxTemps = [];
   let i = 0;
+  let windDirections = { 1: 'N', 2: 'NNE', 3: 'NE', 4: 'ENE', 5: 'E', 6: 'ESE', 7: 'SE', 8: 'SSE', 9: 'S', 10: 'SSE', 11: 'SW', 12: 'WSW', 13: 'W', 14: 'WNW', 15: 'NW', 16: 'NNW' };
+
   for (let days of json.sol_keys) {
     let avTemp, mnTemp, mxTemp;
 
@@ -121,11 +124,10 @@ const FahrenheitToCelsius = function(fahrenheit) {
   return Number(conversion.toFixed(2));
 };
 
-// const solToDate = function(sol, year) {
-//   let day = sol * 1.0275;
-//   let date = new Date(year, 0); // initialize a date in `year-01-01`
-//   return new Date(date.setDate(day)); // add the number of days
-// };
+window.addEventListener('load', event => {
+  document.getElementById('c-loader').style.display = 'None';
+  console.log('Page is fully loaded in');
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   console.log('JAVASCRIPT IS LOADED!');
