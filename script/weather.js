@@ -30,6 +30,7 @@ const getWeatherData = function(json) {
     keys.push(days);
     dt = new Date(json[keys[i]].Last_UTC);
 
+    wind = json[keys[i]].WD.most_common.compass_degrees;
     avTemp = FahrenheitToCelsius(json[keys[i]].AT.av);
     mnTemp = FahrenheitToCelsius(json[keys[i]].AT.mn);
     mxTemp = FahrenheitToCelsius(json[keys[i]].AT.mx);
@@ -90,9 +91,46 @@ const getWeatherData = function(json) {
       </div>
     </div>
     `;
-    } else {
+    } else if (i <= 3) {
       list += `
       <div class="main">
+      <div class="c-weather-body">
+        <div class="c-weather-header">Sol ${keys[i]}</div>
+        <div class"c-weather-subheader>${dates[i]}</div>
+        <hr />
+        <div class="c-weather-high">
+          <div class="c-weather-text">High:</div>
+          <div class="c-weather-value">${mxTemps[i]} °C</div>
+        </div>
+        <div class="c-weather-low">
+          <div class="c-weather-text">Low:</div>
+          <div class="c-weather-value">${mnTemps[i]} °C</div>
+        </div>
+        <div class="c-weather-average">
+          <div class="c-weather-text">Ave:</div>
+          <div class="c-weather-value">${avTemps[i]} °C</div>
+        </div>
+        <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
+          <title>Windroos</title>
+          <g transform="translate(-113 -365.479)">
+            <g transform="translate(157 379.174)">
+              <path d="M8.3,0l8.3,34.8H0Z" transform="translate(0 0)" fill="#fff" />
+              <path d="M8.3,0l8.3,34.8H0Z" transform="translate(16.607 69.592) rotate(-180)" fill="#e3dddd" />
+            </g>
+            <text transform="translate(165 463.479)" fill="#fff" font-size="16" font-family="Montserrat-Regular, Montserrat"><tspan x="-6.504" y="0">N</tspan></text>
+          </g>
+          <g fill="none" stroke="#fff" stroke-width="1">
+            <circle cx="52.5" cy="52.5" r="52.5" stroke="none" />
+            <circle cx="52.5" cy="52.5" r="52" fill="none" />
+          </g>
+        </svg>
+      </div>
+      
+    </div>
+    `;
+    } else {
+      list += `
+      <div class="main second">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
