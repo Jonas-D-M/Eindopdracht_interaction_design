@@ -11,9 +11,11 @@ fetch(serverEndpoint)
     getWeatherData(json);
   });
 
+let firstPage = '';
+let secondPage = '';
 const getWeatherData = function(json) {
   let windList = [];
-  let list = '';
+
   let keys = [];
   let avTemps = [];
   let mnTemps = [];
@@ -56,7 +58,7 @@ const getWeatherData = function(json) {
   // insert on page
   for (let i = 0; i < keys.length; i++) {
     if (i == 0) {
-      list += `
+      firstPage += `
       <div class="header">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
@@ -92,7 +94,7 @@ const getWeatherData = function(json) {
     </div>
     `;
     } else if (i <= 3) {
-      list += `
+      firstPage += `
       <div class="main">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
@@ -129,7 +131,7 @@ const getWeatherData = function(json) {
     </div>
     `;
     } else {
-      list += `
+      secondPage += `
       <div class="main second">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
@@ -167,7 +169,7 @@ const getWeatherData = function(json) {
     `;
     }
   }
-  document.querySelector('.c-weather').innerHTML = list;
+  document.querySelector('.c-weather').innerHTML = firstPage;
   console.info('Data loaded');
 };
 
@@ -179,6 +181,15 @@ const FahrenheitToCelsius = function(fahrenheit) {
 
 window.addEventListener('load', event => {
   console.info('Page fuly loaded');
+  let btnPrev = document.getElementById('previous');
+  let btnNext = document.getElementById('next');
+
+  btnNext.addEventListener('click', function() {
+    document.querySelector('.c-weather').innerHTML = firstPage;
+  });
+  btnPrev.addEventListener('click', function() {
+    document.querySelector('.c-weather').innerHTML = secondPage;
+  });
 });
 
 document.addEventListener('DOMContentLoaded', function() {

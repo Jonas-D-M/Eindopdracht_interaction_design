@@ -741,9 +741,19 @@ input {
   margin-bottom: 24px;
 }
 
+#previous {
+  display: none;
+}
+#next {
+  display: none;
+}
+
 @media (min-width: 992px) {
-  .second {
-    display: none;
+  #previous {
+    display: block;
+  }
+  #next {
+    display: block;
   }
   .header {
     grid-area: header;
