@@ -3,7 +3,7 @@ function handleFloatingLabel() {
     label = document.querySelector('.js-floating-label');
 
   input.addEventListener('blur', function() {
-    console.log(event);
+    // console.log(event);
     if (input.value) {
       label.classList.add('is-floating');
     } else {
