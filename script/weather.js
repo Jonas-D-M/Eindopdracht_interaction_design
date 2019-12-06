@@ -56,10 +56,10 @@ const getWeatherData = function(json) {
   dates.reverse();
 
   // insert on page
-  for (let i = 0; i < keys.length; i++) {
+  for (let i = 0; i < keys.length - 1; i++) {
     if (i == 0) {
       firstPage += `
-      <div class="header">
+      <div class="">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
@@ -93,7 +93,7 @@ const getWeatherData = function(json) {
       </div>
     </div>
     `;
-    } else if (i <= 3) {
+    } else if (i < 3) {
       firstPage += `
       <div class="main">
       <div class="c-weather-body">
@@ -186,9 +186,13 @@ window.addEventListener('load', event => {
 
   btnNext.addEventListener('click', function() {
     document.querySelector('.c-weather').innerHTML = firstPage;
+    document.getElementById('elipse1').style.opacity = 0.5;
+    document.getElementById('elipse2').style.opacity = 1;
   });
   btnPrev.addEventListener('click', function() {
     document.querySelector('.c-weather').innerHTML = secondPage;
+    document.getElementById('elipse1').style.opacity = 1;
+    document.getElementById('elipse2').style.opacity = 0.5;
   });
 });
 
