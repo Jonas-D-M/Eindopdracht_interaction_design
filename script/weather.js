@@ -12,40 +12,54 @@ fetch(serverEndpoint)
   });
 
 const getWeatherData = function(json) {
+  let windList = [];
   let list = '';
   let keys = [];
   let avTemps = [];
   let mnTemps = [];
   let mxTemps = [];
+  let dates = [];
+  let dt, day, month;
   let i = 0;
-  let windDirections = { 1: 'N', 2: 'NNE', 3: 'NE', 4: 'ENE', 5: 'E', 6: 'ESE', 7: 'SE', 8: 'SSE', 9: 'S', 10: 'SSE', 11: 'SW', 12: 'WSW', 13: 'W', 14: 'WNW', 15: 'NW', 16: 'NNW' };
+
+  const monthNames = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
+  const windDirections = { 1: 'N', 2: 'NNE', 3: 'NE', 4: 'ENE', 5: 'E', 6: 'ESE', 7: 'SE', 8: 'SSE', 9: 'S', 10: 'SSE', 11: 'SW', 12: 'WSW', 13: 'W', 14: 'WNW', 15: 'NW', 16: 'NNW' };
 
   for (let days of json.sol_keys) {
     let avTemp, mnTemp, mxTemp;
-
     keys.push(days);
+    dt = new Date(json[keys[i]].Last_UTC);
 
     avTemp = FahrenheitToCelsius(json[keys[i]].AT.av);
     mnTemp = FahrenheitToCelsius(json[keys[i]].AT.mn);
     mxTemp = FahrenheitToCelsius(json[keys[i]].AT.mx);
+    day = dt.getDate().toString();
+    month = monthNames[dt.getMonth()];
 
+    windList.push(wind);
+    dates.push(month + ' ' + day);
     avTemps.push(avTemp);
     mnTemps.push(mnTemp);
     mxTemps.push(mxTemp);
-
     i++;
   }
+  console.log(windList);
+
+  // reverse chronological order
   keys.reverse();
   avTemps.reverse();
   mnTemps.reverse();
   mxTemps.reverse();
+  dates.reverse();
 
+  // insert on page
   for (let i = 0; i < keys.length; i++) {
     if (i == 0) {
       list += `
       <div class="header">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
+        <div class"c-weather-subheader>${dates[i]}</div>
         <hr />
         <div class="c-weather-high">
           <div class="c-weather-text">High:</div>
@@ -59,7 +73,7 @@ const getWeatherData = function(json) {
           <div class="c-weather-text">Ave:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
-        <svg class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
+        <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
           <title>Windroos</title>
           <g transform="translate(-113 -365.479)">
             <g transform="translate(157 379.174)">
@@ -81,6 +95,7 @@ const getWeatherData = function(json) {
       <div class="main">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
+        <div class"c-weather-subheader>${dates[i]}</div>
         <hr />
         <div class="c-weather-high">
           <div class="c-weather-text">High:</div>
@@ -94,7 +109,7 @@ const getWeatherData = function(json) {
           <div class="c-weather-text">Ave:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
-        <svg class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
+        <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
           <title>Windroos</title>
           <g transform="translate(-113 -365.479)">
             <g transform="translate(157 379.174)">
@@ -115,7 +130,7 @@ const getWeatherData = function(json) {
     }
   }
   document.querySelector('.c-weather').innerHTML = list;
-  console.log('Script success!');
+  console.info('Data loaded');
 };
 
 const FahrenheitToCelsius = function(fahrenheit) {
@@ -125,10 +140,9 @@ const FahrenheitToCelsius = function(fahrenheit) {
 };
 
 window.addEventListener('load', event => {
-  document.getElementById('c-loader').style.display = 'None';
-  console.log('Page is fully loaded in');
+  console.info('Page fuly loaded');
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('JAVASCRIPT IS LOADED!');
+  console.info('JS loaded');
 });

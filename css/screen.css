@@ -718,6 +718,7 @@ input {
 */
 .c-compass {
   margin-top: 32px;
+  transform: rotate(-90deg);
 }
 
 /*
