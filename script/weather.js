@@ -188,11 +188,15 @@ window.addEventListener('load', event => {
     document.querySelector('.c-weather').innerHTML = firstPage;
     document.getElementById('elipse1').style.opacity = 0.5;
     document.getElementById('elipse2').style.opacity = 1;
+    document.getElementById('previous').style.opacity = 1;
+    document.getElementById('next').style.opacity = 0;
   });
   btnPrev.addEventListener('click', function() {
     document.querySelector('.c-weather').innerHTML = secondPage;
     document.getElementById('elipse1').style.opacity = 1;
     document.getElementById('elipse2').style.opacity = 0.5;
+    document.getElementById('previous').style.opacity = 0;
+    document.getElementById('next').style.opacity = 1;
   });
 });
 
