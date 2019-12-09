@@ -1,16 +1,17 @@
 // Documentation: https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf
 serverEndpoint = 'https://api.nasa.gov/insight_weather/?api_key=MvvlPiedxmmIBY45P0Dboo28sPGbopdXaZ7iqamW&feedtype=json&ver=1.0';
 
-fetch(serverEndpoint)
-  .then(function(response) {
-    console.log(response.json);
-    return response.json();
-  })
-  .then(function(json) {
-    console.log(json);
-    getWeatherData(json);
-  });
-
+const fetchData = function() {
+  fetch(serverEndpoint)
+    .then(function(response) {
+      console.log(response.json);
+      return response.json();
+    })
+    .then(function(json) {
+      console.log(json);
+      getWeatherData(json);
+    });
+};
 let firstPage = '';
 let secondPage = '';
 const getWeatherData = function(json) {
@@ -52,7 +53,7 @@ const getWeatherData = function(json) {
   for (let i = 0; i < keys.length - 1; i++) {
     if (i == 0) {
       secondPage += `
-      <div class="">
+      <div class="main second">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
@@ -88,7 +89,7 @@ const getWeatherData = function(json) {
     `;
     } else if (i < 3) {
       secondPage += `
-      <div class="main">
+      <div class="main second">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
@@ -125,7 +126,7 @@ const getWeatherData = function(json) {
     `;
     } else {
       firstPage += `
-      <div class="main second">
+      <div class="main">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
@@ -195,4 +196,5 @@ window.addEventListener('load', event => {
 
 document.addEventListener('DOMContentLoaded', function() {
   console.info('JS loaded');
+  fetchData();
 });

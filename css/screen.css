@@ -752,29 +752,32 @@ input {
   margin-bottom: 24px;
 }
 
-#previous {
+#previous,
+#next {
   display: none;
 }
-#next {
+
+.c-slider__circles {
   display: none;
 }
 
 @media (min-width: 992px) {
   .c-slider {
-    position: sticky;
     display: flex;
     justify-content: space-evenly;
     height: 100%;
     width: 100%;
   }
-  #previous {
-    display: block;
-    fill: white;
-  }
+  #previous,
   #next {
     display: block;
     fill: white;
   }
+
+  .c-slider__circles {
+    display: block;
+  }
+
   .header {
     grid-area: header;
   }
