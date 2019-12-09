@@ -48,32 +48,25 @@ const getWeatherData = function(json) {
   }
   console.log(windList);
 
-  // reverse chronological order
-  keys.reverse();
-  avTemps.reverse();
-  mnTemps.reverse();
-  mxTemps.reverse();
-  dates.reverse();
-
   // insert on page
   for (let i = 0; i < keys.length - 1; i++) {
     if (i == 0) {
-      firstPage += `
+      secondPage += `
       <div class="">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
         <hr />
         <div class="c-weather-high">
-          <div class="c-weather-text">High:</div>
+          <div class="c-weather-text">Hi:</div>
           <div class="c-weather-value">${mxTemps[i]} °C</div>
         </div>
         <div class="c-weather-low">
-          <div class="c-weather-text">Low:</div>
+          <div class="c-weather-text">Lo:</div>
           <div class="c-weather-value">${mnTemps[i]} °C</div>
         </div>
         <div class="c-weather-average">
-          <div class="c-weather-text">Ave:</div>
+          <div class="c-weather-text">Av:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
         <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
@@ -94,22 +87,22 @@ const getWeatherData = function(json) {
     </div>
     `;
     } else if (i < 3) {
-      firstPage += `
+      secondPage += `
       <div class="main">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
         <hr />
         <div class="c-weather-high">
-          <div class="c-weather-text">High:</div>
+          <div class="c-weather-text">Hi:</div>
           <div class="c-weather-value">${mxTemps[i]} °C</div>
         </div>
         <div class="c-weather-low">
-          <div class="c-weather-text">Low:</div>
+          <div class="c-weather-text">Lo:</div>
           <div class="c-weather-value">${mnTemps[i]} °C</div>
         </div>
         <div class="c-weather-average">
-          <div class="c-weather-text">Ave:</div>
+          <div class="c-weather-text">Av:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
         <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
@@ -131,22 +124,22 @@ const getWeatherData = function(json) {
     </div>
     `;
     } else {
-      secondPage += `
+      firstPage += `
       <div class="main second">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
         <div class"c-weather-subheader>${dates[i]}</div>
         <hr />
         <div class="c-weather-high">
-          <div class="c-weather-text">High:</div>
+          <div class="c-weather-text">Hi:</div>
           <div class="c-weather-value">${mxTemps[i]} °C</div>
         </div>
         <div class="c-weather-low">
-          <div class="c-weather-text">Low:</div>
+          <div class="c-weather-text">Lo:</div>
           <div class="c-weather-value">${mnTemps[i]} °C</div>
         </div>
         <div class="c-weather-average">
-          <div class="c-weather-text">Ave:</div>
+          <div class="c-weather-text">Av:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
         <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">

@@ -567,6 +567,17 @@ input {
 #COMPONENTS
 \*------------------------------------*/
 /*
+    Component: arrow
+*/
+
+.c-arrow__next {
+  margin-right: 16px;
+}
+.c-arrow__prev {
+  margin-left: 16px;
+}
+
+/*
     Component: subtitle
 */
 .c-subtitle {
