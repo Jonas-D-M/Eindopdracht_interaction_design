@@ -1,5 +1,8 @@
 // Documentation: https://api.nasa.gov/assets/insight/InSight%20Weather%20API%20Documentation.pdf
 serverEndpoint = 'https://api.nasa.gov/insight_weather/?api_key=MvvlPiedxmmIBY45P0Dboo28sPGbopdXaZ7iqamW&feedtype=json&ver=1.0';
+// ToDo: https://cloudcannon.com/deconstructions/2014/11/15/facebook-content-placeholder-deconstruction.html
+// add 3 placeholders that have the same effect as facebook comments loading
+
 
 const fetchData = function() {
   fetch(serverEndpoint)
