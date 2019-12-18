@@ -569,6 +569,9 @@ input {
 /*
     Component: arrow
 */
+.c-arrow {
+  cursor: pointer;
+}
 
 .c-arrow__next {
   margin-right: 16px;
@@ -729,7 +732,7 @@ input {
 */
 .c-compass {
   margin-top: 32px;
-  transform: rotate(-90deg);
+  /* transform: rotate(-90deg); */
 }
 
 /*
@@ -737,11 +740,6 @@ input {
     ---
     Everything related to weather messages
 */
-
-.c-weather {
-  /* margin-top: 40px;
-  margin-bottom: 8px; */
-}
 
 .c-weather-body {
   background-color: rgba(0, 0, 0, 0.4);
@@ -752,8 +750,7 @@ input {
   margin-bottom: 24px;
 }
 
-#previous,
-#next {
+.c-arrow {
   display: none;
 }
 
@@ -768,8 +765,8 @@ input {
     height: 100%;
     width: 100%;
   }
-  #previous,
-  #next {
+
+  .c-arrow {
     display: block;
     fill: white;
   }
@@ -778,9 +775,9 @@ input {
     display: block;
   }
 
-  .header {
+  /* .header {
     grid-area: header;
-  }
+  } */
   .c-weather {
     display: grid;
     grid-template-columns: auto auto auto;
