@@ -759,6 +759,9 @@ input {
 }
 
 @media (min-width: 992px) {
+  .c-weather__secondpage {
+    display: none;
+  }
   .c-slider {
     display: flex;
     justify-content: space-evenly;
