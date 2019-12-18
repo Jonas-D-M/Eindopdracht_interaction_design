@@ -736,6 +736,78 @@ input {
 }
 
 /*
+    Component: Loader
+    ---
+    Loader boxes for site
+*/
+
+.c-loader-box {
+  justify-items: center;
+}
+
+@-webkit-keyframes placeHolderShimmer {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@-moz-keyframes placeHolderShimmer {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: 0% 51%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 51%;
+  }
+}
+
+.c-loader {
+  min-height: 375px;
+  min-width: 184px;
+  padding: 16px;
+  margin-top: 24px;
+  margin-right: 24px;
+  margin-left: 24px;
+  margin-bottom: 24px;
+
+  /* animation stuff */
+  background: linear-gradient(271deg, #000000, #3b3b3b);
+  background-size: 400% 400%;
+
+  -webkit-animation: placeHolderShimmer 1s ease infinite;
+  -moz-animation: placeHolderShimmer 1s ease infinite;
+  animation: placeHolderShimmer 1s ease infinite;
+  opacity: 0.4;
+}
+
+@media (min-width: 992px) {
+  .c-loader-box {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-areas: 'header header header';
+    justify-items: center;
+  }
+}
+
+/*
     Component: weather
     ---
     Everything related to weather messages
