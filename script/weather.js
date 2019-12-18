@@ -12,22 +12,22 @@ const fetchData = function() {
       getWeatherData(json);
     });
 };
-let firstPage = '';
-let secondPage = '';
 
 const getWeatherData = function(json) {
-  let windList = [];
-
-  let keys = [];
-  let avTemps = [];
-  let mnTemps = [];
-  let mxTemps = [];
-  let dates = [];
-  let dt, day, month;
-  let i = 0;
+  let windList = [],
+    keys = [],
+    avTemps = [],
+    mnTemps = [],
+    mxTemps = [],
+    dates = [],
+    windDirections = [],
+    html = '',
+    dt,
+    day,
+    month,
+    i = 0;
 
   const monthNames = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
-  const windDirections = { 1: 'N', 2: 'NNE', 3: 'NE', 4: 'ENE', 5: 'E', 6: 'ESE', 7: 'SE', 8: 'SSE', 9: 'S', 10: 'SSE', 11: 'SW', 12: 'WSW', 13: 'W', 14: 'WNW', 15: 'NW', 16: 'NNW' };
 
   for (let days of json.sol_keys) {
     let avTemp, mnTemp, mxTemp;
@@ -42,19 +42,22 @@ const getWeatherData = function(json) {
     month = monthNames[dt.getMonth()];
 
     windList.push(wind);
+    windDirections.push(getDirection(windList[i]));
+
     dates.push(month + ' ' + day);
     avTemps.push(avTemp);
     mnTemps.push(mnTemp);
     mxTemps.push(mxTemp);
     i++;
   }
+  console.log(dates);
   console.log(windList);
+  console.log(windDirections);
 
   // insert on page
   for (let i = 0; i < keys.length - 1; i++) {
     if (i < 3) {
-      secondPage += `
-
+      string = `
       <div class="c-weather__secondpage">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
@@ -74,23 +77,22 @@ const getWeatherData = function(json) {
         </div>
         <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
         <title>Windroos</title>
-        <g transform="translate(-113 -365.479)">
-          <g transform="translate(157 379.174)">
-            <path d="M8.3,0l8.3,34.8H0Z" transform="translate(0 0)" fill="#fff" />
-            <path d="M8.3,0l8.3,34.8H0Z" transform="translate(16.607 69.592) rotate(-180)" fill="#e3dddd" />
-          </g>
-          <text transform="translate(165 463.479)" fill="#fff" font-size="16" font-family="Montserrat-Regular, Montserrat"><tspan x="-6.504" y="0">N</tspan></text>
+        <g transform="translate(-113 -370.479)">
+          <path d="M8.3,0l8.3,34.8H0Z" transform="translate(173.607 458.071) rotate(180)" fill="#fff" />
+          <path d="M8.3,0l8.3,34.8H0Z" transform="translate(157 388.48)" fill="#e3dddd" />
         </g>
         <g fill="none" stroke="#fff" stroke-width="1">
           <circle cx="52.5" cy="52.5" r="52.5" stroke="none" />
           <circle cx="52.5" cy="52.5" r="52" fill="none" />
         </g>
       </svg>
+        <div class="c-winddirection">${windDirections[i]}</div>
       </div>
     </div>
     `;
+      html += string;
     } else {
-      firstPage += `
+      string = `
       <div class="c-weather__firstpage">
       <div class="c-weather-body">
         <div class="c-weather-header">Sol ${keys[i]}</div>
@@ -108,28 +110,37 @@ const getWeatherData = function(json) {
           <div class="c-weather-text">Av:</div>
           <div class="c-weather-value">${avTemps[i]} °C</div>
         </div>
+
+
         <svg id=${i} class="c-compass" xmlns="http://www.w3.org/2000/svg" width="105" height="105" viewBox="0 0 105 105">
-          <title>Windroos</title>
-          <g transform="translate(-113 -365.479)">
-            <g transform="translate(157 379.174)">
-              <path d="M8.3,0l8.3,34.8H0Z" transform="translate(0 0)" fill="#fff" />
-              <path d="M8.3,0l8.3,34.8H0Z" transform="translate(16.607 69.592) rotate(-180)" fill="#e3dddd" />
-            </g>
-            <text transform="translate(165 463.479)" fill="#fff" font-size="16" font-family="Montserrat-Regular, Montserrat"><tspan x="-6.504" y="0">N</tspan></text>
-          </g>
-          <g fill="none" stroke="#fff" stroke-width="1">
-            <circle cx="52.5" cy="52.5" r="52.5" stroke="none" />
-            <circle cx="52.5" cy="52.5" r="52" fill="none" />
-          </g>
-        </svg>
+        <title>Windroos</title>
+        <g transform="translate(-113 -370.479)">
+          <path d="M8.3,0l8.3,34.8H0Z" transform="translate(173.607 458.071) rotate(180)" fill="#fff" />
+          <path d="M8.3,0l8.3,34.8H0Z" transform="translate(157 388.48)" fill="#e3dddd" />
+        </g>
+        <g fill="none" stroke="#fff" stroke-width="1">
+          <circle cx="52.5" cy="52.5" r="52.5" stroke="none" />
+          <circle cx="52.5" cy="52.5" r="52" fill="none" />
+        </g>
+      </svg>
+        <div class="c-winddirection">${windDirections[i]}</div>
+        
+
       </div>
       
     </div>
     `;
+      html += string;
     }
   }
-  let fullPage = secondPage + firstPage;
-  document.querySelector('.c-weather').innerHTML = fullPage;
+
+  document.querySelector('.c-weather').innerHTML = html;
+  for (let i = 0; i < windList.length; i++) {
+    let compass = document.getElementById(i);
+    compass.style.webkitTransform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
+    compass.style.MozTransform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
+    compass.style.transform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
+  }
   console.info('Data loaded');
 };
 
@@ -146,6 +157,12 @@ const FahrenheitToCelsius = function(fahrenheit) {
   let fTemp = fahrenheit;
   let conversion = ((fTemp - 32) * 5) / 9;
   return Number(conversion.toFixed(2));
+};
+
+//get winddirection from degrees
+const getDirection = function(angle) {
+  let directions = ['N', 'NNW', 'NW', 'WNW', 'W', 'WSW', 'SW', 'SSW', 'S', 'SSE', 'SE', 'ESE', 'E', 'ENE', 'NE', 'NNE'];
+  return directions[Math.round(((angle %= 360) < 0 ? angle + 360 : angle) / 22.5) % 16];
 };
 
 window.addEventListener('load', event => {
