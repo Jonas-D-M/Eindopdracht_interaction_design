@@ -7,7 +7,6 @@ const handleFloatingLabel = function() {
     label = document.querySelector('.js-floating-label');
 
   input.addEventListener('blur', function() {
-    // console.log(event);
     if (input.value) {
       label.classList.add('is-floating');
     } else {
@@ -22,8 +21,6 @@ const getDOMElements = function() {
   email.errorMessage = document.querySelector('.js-username-error-message');
 
   signInButton = document.querySelector('.js-sign-in-button');
-
-  console.log(email, signInButton);
 };
 
 const isValidEmailAddress = function(emailAddress) {
@@ -45,7 +42,6 @@ const removeErrors = function(formField) {
 
 const enableListeners = function() {
   email.input.addEventListener('blur', function(e) {
-    console.log(e.target.value);
     const typedInput = e.target.value;
     if (!isValidEmailAddress(typedInput)) {
       if (isEmpty(typedInput)) {
@@ -59,9 +55,7 @@ const enableListeners = function() {
     }
   });
 
-  signInButton.addEventListener('blur', function(e) {
-    console.log('CLICKED THE BUTTON');
-  });
+  signInButton.addEventListener('blur', function(e) {});
 };
 
 document.addEventListener('DOMContentLoaded', function() {
