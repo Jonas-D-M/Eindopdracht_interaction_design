@@ -43,20 +43,6 @@ const removeErrors = function(formField) {
   formField.field.classList.remove('has-error');
 };
 
-const doubleCheckEmail = function(e) {
-  const typedInput = e.target.value;
-  if (isValidEmailAddress(e.target.value)) {
-    removeErrors(email);
-    email.input.removeEventListener('input', doubleCheckEmail);
-  } else {
-    if (isEmpty(typedInput)) {
-      email.errorMessage.innerHTML = 'This field is required';
-    } else {
-      email.errorMessage.innerHTML = 'The email is wrong';
-    }
-  }
-};
-
 const enableListeners = function() {
   email.input.addEventListener('blur', function(e) {
     console.log(e.target.value);
@@ -68,6 +54,8 @@ const enableListeners = function() {
         email.errorMessage.innerHTML = 'The emailaddress is wrong';
       }
       addErrors(email.field);
+    } else {
+      window.location = 'weather.html';
     }
   });
 
