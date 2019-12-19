@@ -21,38 +21,30 @@ const getWeatherData = function(json) {
     mxTemps = [],
     dates = [],
     windDirections = [],
-    html = '',
-    dt,
-    day,
-    month,
-    i = 0;
+    html = '';
 
   const monthNames = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'Jun.', 'Jul.', 'Aug.', 'Sep.', 'Oct.', 'Nov.', 'Dec.'];
 
   for (let days of json.sol_keys) {
-    let avTemp, mnTemp, mxTemp;
     keys.push(days);
-    dt = new Date(json[keys[i]].Last_UTC);
+  }
 
+  let avTemp, mnTemp, mxTemp, wind, dt, day, month;
+  for (let i = 0; i < 6; i++) {
+    dt = new Date(json[keys[i]].Last_UTC);
     wind = json[keys[i]].WD.most_common.compass_degrees;
     avTemp = FahrenheitToCelsius(json[keys[i]].AT.av);
     mnTemp = FahrenheitToCelsius(json[keys[i]].AT.mn);
     mxTemp = FahrenheitToCelsius(json[keys[i]].AT.mx);
     day = dt.getDate().toString();
     month = monthNames[dt.getMonth()];
-
     windList.push(wind);
     windDirections.push(getDirection(windList[i]));
-
     dates.push(month + ' ' + day);
     avTemps.push(avTemp);
     mnTemps.push(mnTemp);
     mxTemps.push(mxTemp);
-    i++;
   }
-  console.log(dates);
-  console.log(windList);
-  console.log(windDirections);
 
   // insert on page
   for (let i = 0; i < keys.length - 1; i++) {
