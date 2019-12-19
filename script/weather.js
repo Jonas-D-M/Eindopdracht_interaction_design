@@ -137,7 +137,7 @@ const getWeatherData = function(json) {
   document.querySelector('.c-weather').innerHTML = html;
   for (let i = 0; i < windList.length; i++) {
     let compass = document.getElementById(i);
-    compass.style.webkitTransform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
+    compass.style.webkitTransform = 'rotate(' + Math.abs(windList[i]) + 'deg)';
     compass.style.MozTransform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
     compass.style.transform = 'rotate(' + -Math.abs(windList[i]) + 'deg)';
   }
@@ -177,6 +177,8 @@ window.addEventListener('load', event => {
     document.getElementById('elipse1').style.opacity = 0.5;
     document.getElementById('elipse2').style.opacity = 1;
     document.getElementById('previous').style.opacity = 1;
+    document.getElementById('previous').style.cursor = 'pointer';
+    document.getElementById('next').style.cursor = 'default';
     document.getElementById('next').style.opacity = 0;
   });
 
@@ -188,6 +190,8 @@ window.addEventListener('load', event => {
     document.getElementById('elipse2').style.opacity = 0.5;
     document.getElementById('previous').style.opacity = 0;
     document.getElementById('next').style.opacity = 1;
+    document.getElementById('next').style.cursor = 'pointer';
+    document.getElementById('previous').style.cursor = 'default';
   });
 });
 
