@@ -19,10 +19,9 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap" rel="stylesheet" />
     <!-- script -->
     <script src="./script/app.js"></script>
-    <script src="./script/test.js"></script>
     <title>InSight</title>
     <!-- show link to site nicely :) -->
-    <meta property="og:image" content="/img/marswallpaper.jpg" />
+    <meta property="og:image" content="./img/marswallpaper.jpg" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Insight" />
     <meta property="og:url" content="https://jonas-d-m.github.io/Eindopdracht_interaction_design/"
@@ -56,19 +55,22 @@
             <img class="c-mockup" src="./img/S8Mockup.png" alt="mockup" />
           </div>
           <div class="o_layout__item u-1-of-2-bp2 c-form o-layout--align-center">
-            <form autocomplete="off" method="#">
+            <form autocomplete="off">
               <h2 class="c-subtitle">Don't miss the launch!</h2>
               <p class="c-subtext">
                 Sign up today to get notified when we launch our application.
               </p>
-              <p class="c-form-field">
+              <p class="c-form-field js-username-field">
                 <label class="c-label c-label--floating js-floating-label" for="username">
                   Email
                 </label>
-                <input class="c-input c-input--with-floating-label js-floating-input" type="email" name="username" id="username" required />
+                <span class="c-label__error-message js-username-error-message">
+                  This field is required
+                </span>
+                <input class="c-input js-username-input c-input--with-floating-label js-floating-input" type="email" name="username" id="username" required />
               </p>
 
-              <input class="o-button-reset c-button" type="button" value="Join the waitlist" />
+              <button class="o-button-reset c-button js-sign-in-button">Join the waitlist</button>
             </form>
           </div>
         </div>
@@ -76,3 +78,5 @@
     </section>
   </body>
 </html>
+
+</div>

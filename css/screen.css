@@ -24,8 +24,7 @@
   --global-color-neutral-xx-dark: #4b4c60;
   --global-color-neutral-xxxx-dark: #20223a;
   --global-color-error: #ff3333;
-  --global-color-error-transparent: #ff3333bf;
-  --global-color-error-x-transparent: #ff33334d;
+  --global-input-error-borderColor: #ff3333;
 
   /* global page settings */
   --global-page-color: var(--global-color-neutral-xxxx-dark);
@@ -873,6 +872,10 @@ input {
   align-items: center;
 }
 
+.has-error {
+  --error-message-display: flex;
+}
+
 /*
     Component: Input
     ---
@@ -956,11 +959,7 @@ more padding on the right to avoid overlap
 .c-label__error-message {
   font-weight: 600;
   float: right;
-  display: none;
-}
-
-.c-label__error-message.is-visible {
-  display: block;
+  display: var(--error-message-display, none);
 }
 
 .c-label--floating {
@@ -994,7 +993,7 @@ more padding on the right to avoid overlap
   font-size: 16px;
   font-weight: 400;
 
-  height: 48px;
+  height: var(--global-whitespace-xl);
 
   border: none;
   outline: none;
@@ -1005,13 +1004,13 @@ more padding on the right to avoid overlap
 
   padding: calc(var(--global-baseline) * 1.5 - var(--button-borderWidth, var(--global-borderWidth))) var(--global-whitespace-md);
 
-  line-height: 21px;
+  line-height: calc(var(--global-baseline) * 3);
 
   width: 100%;
 
   transition: all var(--global-transitionDuration-alpha) var(--global-transitionEasing-out);
 
-  margin-bottom: 48px;
+  margin-bottom: var(--global-whitespace-xl);
 }
 
 .c-button:hover {
